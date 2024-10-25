@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazaroo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+<!-- Contact 3 - Bootstrap Brain Component -->
+
+  </head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#home"><img src="assets/logo/logo.png" alt="Bazaroo Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#recipes">Recipes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/videos/backgroundvideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay">
+                    <h1 class="animate-text">Stay Ahead of the Curve</h1>
+                    <p class="animate-text">Experience the art of fashion</p>
+                    <a href="#products" class="cta-button animate-text" id="get-started-button">Get Started</a>                </div>
+                
+        </section>
+
+
+
+              <!-- Registration Modal -->
+        <div id="registrationModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Register</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Move the About Us section here, right after the home section -->
+        <section id="about" class="parallax-bg">
+            <h2 class="section-title fade-in-up">About Us</h2>
+            <div class="responsive-container-block bigContainer">
+                <div class="responsive-container-block Container">
+                    <div class="imgContainer">
+                        <img class="blueDots" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw3.svg">
+                        <img class="mainImg" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw2.svg">
+                    </div>
+                    <div class="responsive-container-block textSide">
+                        <p class="text-blk subHeading">
+                            Bazaaro is your one-stop destination for quality products ranging from fresh groceries and delicious food items to the latest electronics. We are committed to providing you with the best online shopping experience, with a wide range of products and top-notch customer service.
+                        </p>
+                <br>
+                        <div class="feature-item">
+                            <i class="fas fa-award"></i>
+                            <div class="feature-text">
+                                <p class="text-blk cardHeading">Quality Products</p>
+                                <p class="text-blk cardSubHeading">We offer a wide range of high-quality products to meet all your needs.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <div class="feature-text">
+                                <p class="text-blk cardHeading">Customer Service</p>
+                                <p class="text-blk cardSubHeading">Top-notch customer service for great shopping experience.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-store"></i>
+                            <div class="feature-text">
+                                <p class="text-blk cardHeading">Wide Selection</p>
+                                <p class="text-blk cardSubHeading">From groceries to electronics, we have everything you need in one place.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="feature-text">
+                                <p class="text-blk cardHeading">Easy Shopping</p>
+                                <p class="text-blk cardSubHeading">Our user-friendly platform makes online shopping a breeze for all customers.</p>
+                            </div>
+                        </div>
+                        <a href="#products" class="explore">
+                            Explore our Products
+                        </a>
+                    </div>
+                    <img class="redDots" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/cw3.svg">
+                </div>
+            </div>
+        </section>
+
+        <section id="products">
+            <h2 class="section-title fade-in-up">Our Products</h2>
+            <div class="product-controls">
+                <div class="search-sort-container">
+                    <div class="search-box">
+                        <input type="text" id="product-search" placeholder="Search products...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="sort-box">
+                        <select id="sort-select">
+                            <option value="">Sort by</option>
+                            <option value="price-low-to-high">Price: Low to High</option>
+                            <option value="price-high-to-low">Price: High to Low</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <p id="product-count" class="product-count animated-counter">Total Products: <span>0</span></p>
+            </div>
+            <div class="scrollable-product-container">
+                <div id="product-list-container">
+                    <div id="product-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recipes">
+            <h2 class="section-title fade-in-up">Recipes</h2>
+            <div class="scrollable-recipe-container">
+                <div id="recipe-list-container">
+                    <div id="recipe-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2 class="section-title fade-in-up">What Our Customers Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-track">
+                    <!-- First set of 3 testimonials -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Their products have revolutionized my cooking experience. The quality and innovation are unmatched!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Jane Doe">
+                                <div class="author-info">
+                                    <h4>Jane Doe</h4>
+                                    <p>Home Chef</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The customer service team went above and beyond to help me. I'm a customer for life!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Smith">
+                                <div class="author-info">
+                                    <h4>John Smith</h4>
+                                    <p>Food Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"I've been using their products for years, and the quality has always been consistent. Highly recommended!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Johnson">
+                                <div class="author-info">
+                                    <h4>Emily Johnson</h4>
+                                    <p>Professional Chef</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second set of 3 testimonials -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Bazaroo has transformed my shopping experience. Their wide range of products is impressive!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Brown">
+                                <div class="author-info">
+                                    <h4>Michael Brown</h4>
+                                    <p>Regular Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The recipes section is a game-changer. It's helped me discover new dishes to cook with their products."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Sarah Lee">
+                                <div class="author-info">
+                                    <h4>Sarah Lee</h4>
+                                    <p>Cooking Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Fast delivery and great packaging. My groceries always arrive fresh and in perfect condition."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="David Wilson">
+                                <div class="author-info">
+                                    <h4>David Wilson</h4>
+                                    <p>Busy Professional</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Third set of 3 testimonials -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The variety of products available is amazing. I always find what I'm looking for!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Lisa Chen">
+                                <div class="author-info">
+                                    <h4>Lisa Chen</h4>
+                                    <p>Frequent Shopper</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The website is so easy to navigate. I can find and order products in minutes!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Robert Taylor">
+                                <div class="author-info">
+                                    <h4>Robert Taylor</h4>
+                                    <p>Tech Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The loyalty program is fantastic. I've saved so much money with their rewards!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Watson">
+                                <div class="author-info">
+                                    <h4>Emma Watson</h4>
+                                    <p>Loyal Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fourth set of 3 testimonials -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The quality of products is outstanding. I'm a customer for life!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="James Lee">
+                                <div class="author-info">
+                                    <h4>James Lee</h4>
+                                    <p>Regular Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"The recipes section is a game-changer. It's helped me discover new dishes to cook with their products."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Sophia Johnson">
+                                <div class="author-info">
+                                    <h4>Sophia Johnson</h4>
+                                    <p>Cooking Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Fast delivery and great packaging. My groceries always arrive fresh and in perfect condition."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/59.jpg" alt="William Brown">
+                                <div class="author-info">
+                                    <h4>William Brown</h4>
+                                    <p>Busy Professional</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      <!-- Contact 6 - Bootstrap Brain Component -->
+
+
+<!-- Contact 3 - Bootstrap Brain Component -->
+<section id="contact">
+  <h2 class="section-title fade-in-up">Contact Us</h2>
+  <div class="contact-container">
+      <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p>We'd love to hear from you. Fill out the form, and we'll get back to you as soon as possible!</p>
+          <div class="info-group">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="info-details">
+                  <span>Head Office</span>
+                  <address>
+                      #60/182-A22, 2nd Floor, K Zone Trade Centre, Makkolath Lane, Opp. Coronation Theatre, Kozhikode, Kerala, India, PIN 673004
+                  </address>
+              </div>
+          </div>
+          <div class="info-group">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="info-details">
+                  <span>Branch</span>
+                  <address>
+                      Bldg no XVI / 1549 F 1 3rd Floor Above Reliance Fresh, Kandathil Complex P.T Jacob Road Thoppumpady, City Cochi-682005
+                  </address>
+              </div>
+          </div>
+          <div class="info-group">
+              <i class="fas fa-envelope"></i>
+              <div class="info-details">
+                  <span>Email Address</span>
+                  <span><a href="mailto:contact@fullstackdeveloper.io">contact@fullstackdeveloper.io</a></span>
+              </div>
+          </div>
+          <div class="info-group">
+              <i class="fas fa-phone"></i>
+              <div class="info-details">
+                  <span>Phone Numbers</span>
+                  <span>+91 8281 628 618</span>
+                  <span>+91 8281 628 618</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="contact-form-container">
+          <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                  <div class="form-group">
+                      <input type="text" id="name" name="name" required placeholder=" ">
+                      <label for="name">Your Name</label>
+                  </div>
+                  <div class="form-group">
+                      <input type="email" id="email" name="email" required placeholder=" ">
+                      <label for="email">Email Address</label>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <input type="text" id="subject" name="subject" required placeholder=" ">
+                  <label for="subject">Subject</label>
+              </div>
+              <div class="form-group">
+                  <textarea id="message" name="message" required placeholder=" "></textarea>
+                  <label for="message">Your Message</label>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+
+          <!-- Success Message -->
+          <div id="successMessage" class="hidden">
+              <i class="fas fa-check-circle"></i> Message Sent Successfully!
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Bazaaro is your one-stop destination for quality products ranging from fresh groceries and delicious food items to the latest electronics. We are committed to providing you with the best online shopping experience, with a wide range of products and top-notch customer service.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#recipes">Recipes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BAZAROO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="dummyData.js"></script>
+    <script src="script.js"></script>
+
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-recipe-details"></div>
+        </div>
+    </div>
+</body>
+</html>
