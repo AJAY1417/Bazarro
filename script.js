@@ -75,7 +75,7 @@ function filterAndSortProducts() {
 // Smooth scroll function
 function smoothScroll(target, duration) {
     var targetElement = document.querySelector(target);
-    var targetPosition = targetElement.getBoundingClientRect().top;
+    var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
     var startPosition = window.pageYOffset;
     var distance = targetPosition - startPosition;
     var startTime = null;
@@ -484,4 +484,6 @@ function setupScrollAnimations() {
 
 // Call this function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', setupScrollAnimations);
+
+
 
