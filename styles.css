@@ -31,10 +31,8 @@ header {
     right: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    height: 80px; /* Set a fixed height for the header */
+    height: 80px;
 }
-
-/* Remove any existing transparency styles for the header */
 
 .logo {
     font-size: 28px;
@@ -46,16 +44,21 @@ header {
     text-decoration: none;
 }
 
-nav ul {
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
     display: flex;
     list-style: none;
 }
 
-nav ul li {
+.nav-links li {
     margin-left: 2rem;
 }
 
-nav ul li a {
+.nav-links li a {
     color: #333;
     text-decoration: none;
     font-weight: 400;
@@ -64,7 +67,7 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a::after {
+.nav-links li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -75,11 +78,11 @@ nav ul li a::after {
     transition: width 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-links li a:hover {
     color: #84fab0;
 }
 
-nav ul li a:hover::after {
+.nav-links li a:hover::after {
     width: 100%;
 }
 
@@ -856,8 +859,8 @@ footer {
 }
 
 .logo img {
-    height: 75px; /* Adjust this value to your preferred logo height */
-    width: auto; /* This maintains the aspect ratio */
+    height: 60px;
+    width: auto;
 }
 
 
@@ -1216,14 +1219,14 @@ footer {
 
 #about .responsive-cell-block {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
 #about .cardImgContainer {
+    width: 40px;
+    flex-shrink: 0;
     margin-right: 15px;
-    display: inline-flex;
-    align-items: center;
 }
 
 #about .cardImgContainer i {
@@ -1232,21 +1235,20 @@ footer {
 }
 
 #about .cardText {
-    flex: 1;
+    flex-grow: 1;
 }
 
 #about .text-blk.cardHeading {
     font-size: 1.1rem;
     font-weight: 600;
     color: #333;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
 #about .text-blk.cardSubHeading {
     font-size: 0.9rem;
     color: #666;
-    margin-top: 5px;
-    margin-left: 39px; /* This should match the icon width + right margin */
+    margin: 0;
 }
 
 #about .explore-container {
@@ -1490,9 +1492,59 @@ main {
     transform: translateY(0);
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
 
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
 
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0.3rem 2rem;
+    }
 
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
 
+    .nav-links.active {
+        right: 0;
+    }
 
+    .nav-links li {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
 
