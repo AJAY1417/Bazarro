@@ -191,9 +191,8 @@ nav ul li a:hover::after {
 }
 
 section {
-    padding-top: 120px;
-    margin-top: -120px;
-    padding-bottom: 80px; /* Add this line for consistent bottom spacing */
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 .scrollable-product-container {
     height: 520px; /* Adjust this value based on your product card height and gap */
@@ -281,6 +280,7 @@ section {
     padding: 50px 0 80px 0; /* Increased bottom padding */
     overflow: hidden;
     margin-bottom: 80px;
+    padding-bottom: 80px; /* Add some bottom padding to the testimonials section */
 }
 
 .testimonial-carousel {
@@ -852,12 +852,87 @@ footer {
     width: auto; /* This maintains the aspect ratio */
 }
 
+
+
+
+
+
+
+/* partner with us  */
+
+
+
+.partner-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #f8f8f8;
+    margin-bottom: 80px; /* Add margin to the bottom of the partner section */
+}
+
+.partner-section .carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    position: relative;
+}
+
+.partner-section .box {
+    flex: 0 0 25%;
+    padding: 20px;
+    margin: 0 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-section .box:hover {
+    transform: translateY(-10px);
+}
+
+.partner-section .box img {
+    max-width: 100%;
+    max-height: 120px; /* Increased from 80px to 120px */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.partner-section .box:hover img {
+    transform: scale(1.1); /* Add a slight zoom effect on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ... other styles ... */
 /* General Section Styles */
 #contact {
   padding: 40px;
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
+  padding-top: 80px; /* Adjust top padding of the contact section */
+  margin-top: 0; /* Remove any top margin */
 }
 
 .section-title {
@@ -1249,8 +1324,8 @@ footer {
 
 /* Ensure all sections have consistent top padding */
 section {
-    padding-top: 120px; /* Increased from 100px to 120px */
-    margin-top: -120px; /* Adjusted to match the padding-top */
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 /* Adjust the main content to account for the fixed header */
@@ -1382,6 +1457,19 @@ main {
     animation-delay: 0.6s;
 }
 
+#partners {
+    margin-bottom: 0; /* Remove this if it exists */
+}
+
+#contact {
+    padding-top: 80px; /* Adjust this value */
+    margin-top: 0; /* Remove this negative margin */
+}
+
+#contact .section-title {
+    margin-bottom: 40px; /* Add more space below the Contact Us title */
+}
+
 /* Add this to your existing styles */
 .fade-in-up {
     opacity: 0;
@@ -1394,49 +1482,5 @@ main {
     transform: translateY(0);
 }
 
-/* New staggered animation for section content */
-.stagger-fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
 
-.stagger-fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
 
-/* Parallax effect for background images */
-.parallax-bg {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* Smooth reveal for product and recipe cards */
-.card-reveal {
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.card-reveal.appear {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Animated counter */
-.animated-counter {
-    transition: color 0.3s ease;
-}
-
-/* Subtle hover effects */
-.hover-effect {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-effect:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}

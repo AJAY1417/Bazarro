@@ -74,16 +74,16 @@ function filterAndSortProducts() {
 
 // Smooth scroll function
 function smoothScroll(target, duration) {
-    var targetElement = document.querySelector(target);
-    var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-    var startPosition = window.pageYOffset;
-    var distance = targetPosition - startPosition;
-    var startTime = null;
+    const targetElement = document.querySelector(target);
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
 
     function animation(currentTime) {
         if (startTime === null) startTime = currentTime;
-        var timeElapsed = currentTime - startTime;
-        var run = ease(timeElapsed, startPosition, distance, duration);
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
         window.scrollTo(0, run);
         if (timeElapsed < duration) requestAnimationFrame(animation);
     }
@@ -364,9 +364,12 @@ document.getElementById("contactForm").addEventListener("submit", function (even
 document.addEventListener('DOMContentLoaded', function () {
     const exploreButton = document.querySelector('#about .explore');
     if (exploreButton) {
-        exploreButton.addEventListener('click', function(e) {
+        exploreButton.addEventListener('click', function (e) {
             e.preventDefault();
-            smoothScroll('#products', 1000);
+            const productsSection = document.querySelector('#products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
@@ -429,61 +432,48 @@ document.addEventListener('DOMContentLoaded', setupTestimonialCarousel);
 
 
 
+const carousel = document.querySelector(".partner-section .carousel");
 
-// Add smooth scrolling to all links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        smoothScroll(this.getAttribute('href'), 1000);
-    });
-});
+setInterval(() => {
+    // Move the first box to the end with a smooth transition
+    carousel.style.transition = "transform 0.5s ease";
+    carousel.style.transform = "translateX(-25%)"; // Slide left to show the next 4 boxes
+
+    // After the transition is done, reset to the original position instantly and rearrange boxes
+    setTimeout(() => {
+        carousel.style.transition = "none";
+        carousel.appendChild(carousel.firstElementChild); // Move the first box to the end
+        carousel.style.transform = "translateX(0)"; // Reset position
+    }, 500); // Match the transition duration
+}, 3000);
 
 // Add this function to your existing script.js
 function setupScrollAnimations() {
-    const faders = document.querySelectorAll('.fade-in-up, .stagger-fade-in, .card-reveal');
+    const faders = document.querySelectorAll('.fade-in-up');
     const appearOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -100px 0px"
     };
 
     const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-        entries.forEach((entry, index) => {
-            if (!entry.isIntersecting) return;
-            
-            setTimeout(() => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
                 entry.target.classList.add('appear');
-            }, index * 100); // Stagger effect
-            
-            appearOnScroll.unobserve(entry.target);
+                appearOnScroll.unobserve(entry.target);
+            }
         });
     }, appearOptions);
 
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
-
-    // Animated counter
-    const productCount = document.querySelector('#product-count span');
-    if (productCount) {
-        const targetCount = parseInt(productCount.textContent);
-        let count = 0;
-        const duration = 2000; // 2 seconds
-        const interval = 50; // Update every 50ms
-        const increment = targetCount / (duration / interval);
-
-        const counter = setInterval(() => {
-            count += increment;
-            if (count >= targetCount) {
-                clearInterval(counter);
-                count = targetCount;
-            }
-            productCount.textContent = Math.round(count);
-        }, interval);
-    }
 }
 
 // Call this function when the DOM is loaded
-document.addEventListener('DOMContentLoaded', setupScrollAnimations);
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    setupScrollAnimations();
+    // ... your other initialization code ...
+});
 
